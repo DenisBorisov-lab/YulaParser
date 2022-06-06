@@ -1,0 +1,139 @@
+// https://youla.ru/moskva/auto/s-probegom?
+// attributes[price][to]=11000000000
+// attributes[price][from]=10000
+// attributes[term_of_placement][from]=-7%20days
+// attributes[term_of_placement][to]=now
+// attributes[auto_state][0]=161308
+// attributes[auto_owner_type][0]=161309
+// attributes[auto_mileage][from]=
+// attributes[auto_mileage][to]=100000
+// attributes[auto_drive_type][0]=20805
+// attributes[auto_gear_type][0]=20810
+// attributes[auto_gear_type][1]=20808
+// attributes[auto_gear_type][2]=20807
+// attributes[auto_engine_power][from]=1
+// attributes[auto_engine_power][to]=1600
+// attributes[auto_engine][0]=20751
+// attributes[auto_engine][1]=20748
+// attributes[auto_color][0]=20755
+// attributes[auto_color][1]=20772
+// attributes[auto_color][2]=20765
+// attributes[auto_color][3]=20766
+// attributes[auto_year][from]=
+// attributes[auto_year][to]=2013
+
+{
+  "operationName": "catalogProductsBoard",
+  "variables": {
+    "sort": "DEFAULT",
+    "attributes": [
+      {
+        "slug": "price",
+        "value": null,
+        "from": 10000,
+        "to": 11000000000
+      },
+      {
+        "slug": "auto_state",
+        "value": [
+          "161308"
+        ],
+        "from": null,
+        "to": null
+      },
+      {
+        "slug": "auto_owner_type",
+        "value": [
+          "161309"
+        ],
+        "from": null,
+        "to": null
+      },
+      {
+        "slug": "auto_mileage",
+        "value": null,
+        "from": null,
+        "to": 100000
+      },
+      {
+        "slug": "auto_drive_type",
+        "value": [
+          "20805"
+        ],
+        "from": null,
+        "to": null
+      },
+      {
+        "slug": "auto_gear_type",
+        "value": [
+          "20810",
+          "20808",
+          "20807"
+        ],
+        "from": null,
+        "to": null
+      },
+      {
+        "slug": "auto_engine_power",
+        "value": null,
+        "from": 1,
+        "to": 1600
+      },
+      {
+        "slug": "auto_engine",
+        "value": [
+          "20751",
+          "20748"
+        ],
+        "from": null,
+        "to": null
+      },
+      {
+        "slug": "auto_color",
+        "value": [
+          "20755",
+          "20772",
+          "20765",
+          "20766"
+        ],
+        "from": null,
+        "to": null
+      },
+      {
+        "slug": "auto_year",
+        "value": null,
+        "from": null,
+        "to": 2013
+      },
+      {
+        "slug": "categories",
+        "value": [
+          "s-probegom"
+        ],
+        "from": null,
+        "to": null
+      }
+    ],
+    "datePublished": {
+      "to": 1654262891,
+      "from": 1653658091
+    },
+    "location": {
+      "latitude": null,
+      "longitude": null,
+      "city": null,
+      "distanceMax": null
+    },
+    "search": "",
+    "cursor": ""
+  },
+  "extensions": {
+    "persistedQuery": {
+      "version": 1,
+      "sha256Hash": "6e7275a709ca5eb1df17abfb9d5d68212ad910dd711d55446ed6fa59557e2602"
+    }
+  }
+}
+
+
+
