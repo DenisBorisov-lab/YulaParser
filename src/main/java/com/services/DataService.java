@@ -1,6 +1,12 @@
 package com.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.location.City;
+import com.location.LocationModel;
 import com.request.*;
+import com.response.YoulaResponse;
 import lombok.SneakyThrows;
 
 import java.nio.charset.StandardCharsets;
@@ -10,11 +16,17 @@ import java.util.*;
 public class DataService {
     private final String domain;
     private final String[] attributes;
+    private final String json;
+    private final ObjectMapper mapper;
 
 
-    public DataService(String domain, String attributes) {
+    public DataService(String domain, String attributes, String json) {
         this.domain = domain;
         this.attributes = attributes.split("&");
+        this.json = json;
+        mapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
     }
 
     public Request getModelRequest() {
@@ -27,15 +39,20 @@ public class DataService {
         return request;
     }
 
+    @SneakyThrows
+    public YoulaResponse getResultedObject(String json){
+        return mapper.readValue(json, YoulaResponse.class);
+    }
+
     private Variables getVariables() {
         Variables variables = new Variables();
         variables.setSort(getSort());
         variables.setAttributes(getAttributes());
         variables.setDatePublished(getDatePublished());
-        variables.setLocation(null);
+        variables.setLocation(getLocation());
         variables.setSearch(getSearch());
         variables.setCursor("");
-        return null;
+        return variables;
     }
 
     private String getOperationName() {
@@ -54,7 +71,7 @@ public class DataService {
         PersistedQuery persistedQuery = new PersistedQuery();
 
         persistedQuery.setVersion(1L);
-        persistedQuery.setSha256Hash(getHashCode());
+        persistedQuery.setSha256Hash("6e7275a709ca5eb1df17abfb9d5d68212ad910dd711d55446ed6fa59557e2602");
 
         return persistedQuery;
     }
@@ -113,11 +130,6 @@ public class DataService {
         }
 
         return value;
-    }
-
-    // TODO: 05.06.2022 доделать с cookie
-    public Location getLocation() {
-        return null;
     }
 
     public DatePublished getDatePublished() {
@@ -206,6 +218,19 @@ public class DataService {
         res[res.length - 1] = value;
         return res;
 
+    }
+
+    @SneakyThrows
+    public Location getLocation(){
+        LocationModel location = mapper.readValue(json, LocationModel.class);
+
+        Location result = new Location();
+        result.setCity(location.getCity().getID());
+        result.setDistanceMax(location.getR());
+        result.setLatitude(location.getCity().getCoords().getLatitude());
+        result.setLongitude(location.getCity().getCoords().getLongitude());
+
+        return result;
     }
 
 
